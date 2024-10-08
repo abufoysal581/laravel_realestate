@@ -34,7 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::controller(propertyController::class)->group(function(){
-    Route::get('property/index','index');
+    Route::get('property','index');
     Route::post('property/create','store');
     Route::get('property/{property}','show');
     Route::post('property/edit/{id}','update');
