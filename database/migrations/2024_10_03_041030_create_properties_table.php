@@ -18,6 +18,12 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->biginteger('price')->nullable();
             $table->string('type')->nullable();
+            $table->string('listing_type')->nullable();
+            $table->biginteger('bedrooms')->nullable();
+            $table->biginteger('bathrooms')->nullable();
+            $table->biginteger('area')->nullable();
+            $table->biginteger('parking')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
