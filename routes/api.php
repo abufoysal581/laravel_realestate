@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\propertyController;
+use App\Http\Controllers\Api\RequestforrentController;
+use App\Http\Controllers\Api\RequestsForBuyingController;
 // use App\Http\Controllers\Api\DesignationController;
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +41,23 @@ Route::controller(propertyController::class)->group(function(){
     Route::get('property/{property}','show');
     Route::post('property/edit/{id}','update');
     Route::delete('property/{property}','destroy');
+    // Route::post('designation/create','store');
+});
+
+Route::controller(RequestforrentController::class)->group(function(){
+    Route::get('requestsforrent','index');
+    Route::post('requestsforrent/create','store');
+    Route::get('requestsforrent/{requestsforrent}','show');
+    Route::post('requestsforrent/edit/{id}','update');
+    Route::delete('requestsforrent/{requestsforrent}','destroy');
+    // Route::post('designation/create','store');
+});
+
+Route::controller(RequestsForBuyingController::class)->group(function(){
+    Route::get('requestsforbuying','index');
+    Route::post('requestsforbuying/create','store');
+    Route::get('requestsforbuying/{requestsforbuying}','show');
+    Route::post('requestsforbuying/edit/{id}','update');
+    Route::delete('requestsforbuying/{requestsforbuying}','destroy');
     // Route::post('designation/create','store');
 });
