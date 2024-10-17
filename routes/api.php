@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\propertyController;
 use App\Http\Controllers\Api\RequestforrentController;
 use App\Http\Controllers\Api\RequestsForBuyingController;
+use App\Http\Controllers\Api\RentedPropertyListController;
+use App\Http\Controllers\Api\SoldPropertyController;
+use App\Http\Controllers\Api\ClientController;
 // use App\Http\Controllers\Api\DesignationController;
 /*
 |--------------------------------------------------------------------------
@@ -59,5 +62,32 @@ Route::controller(RequestsForBuyingController::class)->group(function(){
     Route::get('requestsforbuying/{requestsforbuying}','show');
     Route::post('requestsforbuying/edit/{id}','update');
     Route::delete('requestsforbuying/{requestsforbuying}','destroy');
+    // Route::post('designation/create','store');
+});
+
+Route::controller(RentedPropertyListController::class)->group(function(){
+    Route::get('rentedpropertylist','index');
+    Route::post('rentedpropertylist/create','store');
+    Route::get('rentedpropertylist/{rentedpropertylist}','show');
+    Route::post('rentedpropertylist/edit/{id}','update');
+    Route::delete('rentedpropertylist/{rentedpropertylist}','destroy');
+    // Route::post('designation/create','store');
+});
+
+Route::controller(SoldPropertyController::class)->group(function(){
+    Route::get('soldpropertylist','index');
+    Route::post('soldpropertylist/create','store');
+    Route::get('soldpropertylist/{soldpropertylist}','show');
+    Route::post('soldpropertylist/edit/{id}','update');
+    Route::delete('soldpropertylist/{soldpropertylist}','destroy');
+    // Route::post('designation/create','store');
+});
+
+Route::controller(ClientController::class)->group(function(){
+    Route::get('clients','index');
+    Route::post('clients/create','store');
+    Route::get('clients/{clients}','show');
+    Route::post('clients/edit/{id}','update');
+    Route::delete('clients/{clients}','destroy');
     // Route::post('designation/create','store');
 });

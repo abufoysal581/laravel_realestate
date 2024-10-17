@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('requests_for_rents', function (Blueprint $table) {
             $table->id();
             $table->string('client_name');
+            $table->string('client_id');
             $table->string('email')->nullable();
-            $table->biginteger('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->string('property_title');
             $table->biginteger('property_id')->nullable();
             $table->biginteger('request_date')->nullable();
