@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\RequestsForBuyingController;
 use App\Http\Controllers\Api\RentedPropertyListController;
 use App\Http\Controllers\Api\SoldPropertyController;
 use App\Http\Controllers\Api\ClientController;
+use App\Http\Controllers\Api\PaySoldController;
+use App\Http\Controllers\Api\PayRentController;
 // use App\Http\Controllers\Api\DesignationController;
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +93,5 @@ Route::controller(ClientController::class)->group(function(){
     Route::delete('clients/{clients}','destroy');
     // Route::post('designation/create','store');
 });
+
+

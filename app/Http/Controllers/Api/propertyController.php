@@ -15,7 +15,22 @@ class propertyController extends BaseController
     }
 
     public function store(Request $request){
-        $data=property::create($request->all());
+   /* for files */
+   $input=$request->all();
+   $files=[];
+   if($request->hasFile('files')){
+       foreach($request->file('files') as $f){
+           $imagename=time().rand(1111,9999).".".$f->extension();
+           $imagePath=public_path().'/addproperty';
+           if($f->move($imagePath,$imagename)){
+               array_push($files,$imagename);
+           }
+       }
+   }
+   $input['image']=implode(',',$files);
+   /* /for files */
+
+        $data=property::create($input);
         return $this->sendResponse($data,"property created successfully");
     }
     public function show(property $property){
@@ -24,7 +39,22 @@ class propertyController extends BaseController
 
     public function update(Request $request,$id){
 
-        $data=property::where('id',$id)->update($request->all());
+        $input=$request->all();
+        /* for files */
+        $files=[];
+        if($request->hasFile('files')){
+            foreach($request->file('files') as $f){
+                $imagename=time().rand(1111,9999).".".$f->extension();
+                $imagePath=public_path().'/addproperty';
+                if($f->move($imagePath,$imagename)){
+                    array_push($files,$imagename);
+                }
+            }
+            $input['image']=implode(',',$files);
+        }
+        unset($input['files']);
+
+        $property=property::where('id',$id)->update($input);
         return $this->sendResponse($id,"property updated successfully");
     }
 
