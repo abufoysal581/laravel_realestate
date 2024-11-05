@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('property_title');
-            $table->biginteger('property_id')->nullable();
-            $table->biginteger('request_date')->nullable();
+            $table->bigInteger('property_id')->nullable();
+            $table->date('request_date');
             $table->timestamps();
         });
     }
