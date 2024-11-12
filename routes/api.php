@@ -10,7 +10,9 @@ use App\Http\Controllers\Api\RentedPropertyListController;
 use App\Http\Controllers\Api\SoldPropertyController;
 use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\PaySoldController;
-use App\Http\Controllers\Api\PayRentController;
+use App\Http\Controllers\Api\CatagoryController;
+use App\Http\Controllers\Api\AllocationsController;
+
 // use App\Http\Controllers\Api\DesignationController;
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +93,24 @@ Route::controller(ClientController::class)->group(function(){
     Route::get('clients/{clients}','show');
     Route::post('clients/edit/{id}','update');
     Route::delete('clients/{clients}','destroy');
+    // Route::post('designation/create','store');
+});
+
+Route::controller(CatagoryController::class)->group(function(){
+    Route::get('catagory','index');
+    Route::post('catagory/create','store');
+    Route::get('catagory/{clients}','show');
+    Route::post('catagory/edit/{id}','update');
+    Route::delete('catagory/{clients}','destroy');
+    // Route::post('designation/create','store');
+});
+
+Route::controller(AllocationsController::class)->group(function(){
+    Route::get('allocations','index');
+    Route::post('allocations/create','store');
+    Route::get('allocations/{clients}','show');
+    Route::post('allocations/edit/{id}','update');
+    Route::delete('allocations/{clients}','destroy');
     // Route::post('designation/create','store');
 });
 

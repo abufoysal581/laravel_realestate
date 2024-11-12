@@ -9,8 +9,12 @@ use App\Http\Controllers\Api\BaseController;
 
 class propertyController extends BaseController
 {
-    public function index(){
-        $data=property::get();
+    public function index(Request $request){
+        $data=property::latest();
+        if($request->listing_type){
+            $data=$data->where('listing_type',$request->listing_type);
+        }
+        $data=$data->get();
         return $this->sendResponse($data,"property data");
     }
 
