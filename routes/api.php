@@ -33,6 +33,19 @@ Route::controller(AuthController::class)->group(function(){
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::controller(ClientController::class)->group(function () {
+    Route::post('clientregister', 'registerclient');
+    Route::post('clientlogin', 'loginclients');
+});
+
+
+
+Route::middleware('auth:sanctum')->get('/clients', function (Request $request) {
+    return $request->clients();
+});
 // Route::controller(DesignationController::class)->group(function(){
 //     Route::get('property','index');
 //     Route::get('property/{property}','show');
@@ -87,14 +100,7 @@ Route::controller(SoldPropertyController::class)->group(function(){
     // Route::post('designation/create','store');
 });
 
-Route::controller(ClientController::class)->group(function(){
-    Route::get('clients','index');
-    Route::post('clients/create','store');
-    Route::get('clients/{clients}','show');
-    Route::post('clients/edit/{id}','update');
-    Route::delete('clients/{clients}','destroy');
-    // Route::post('designation/create','store');
-});
+
 
 Route::controller(CatagoryController::class)->group(function(){
     Route::get('catagory','index');
