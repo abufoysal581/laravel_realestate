@@ -14,17 +14,18 @@ return new class extends Migration
         Schema::create('sold_property_lists', function (Blueprint $table) {
             $table->id();
             $table->biginteger('property_id')->nullable();
-            $table->string('property_title');
-            $table->string('property_address');
             $table->string('client_name');
             $table->string('client_id');
             $table->string('email');
-            $table->string('phone');
-            $table->biginteger('total_installments');
-            $table->biginteger('remaining_installments');
-            $table->biginteger('total_amount');
-            $table->biginteger('paid_amount');
-            $table->biginteger('remaining_amount');
+            $table->string('phone')->nullable();
+            $table->date('rent_from')->nullable();
+            $table->date('rent_to')->nullable();
+            $table->decimal('total_installments',10,2)->nullable();
+            $table->decimal('remaining_installments',10,2)->nullable();
+            $table->decimal('total_amount',10,2)->nullable();
+            $table->decimal('paid_amount',10,2)->nullable();
+            $table->decimal('remaining_amount',10,2)->nullable();
+            $table->integer('status')->default(0)->comment('0 rent 1 buy');
             $table->timestamps();
         });
     }

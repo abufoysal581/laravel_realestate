@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\PaySoldController;
 use App\Http\Controllers\Api\CatagoryController;
 use App\Http\Controllers\Api\AllocationsController;
+use App\Http\Controllers\Api\PaymentsController;
 
 // use App\Http\Controllers\Api\DesignationController;
 /*
@@ -119,5 +120,15 @@ Route::controller(AllocationsController::class)->group(function(){
     Route::delete('allocations/{clients}','destroy');
     // Route::post('designation/create','store');
 });
+
+Route::controller(PaymentsController::class)->group(function(){
+    Route::get('payments','index');
+    Route::post('payments/create','store');
+    Route::get('payments/{payments}','show');
+    Route::post('payments/edit/{id}','update');
+    Route::delete('payments/{payments}','destroy');
+    // Route::post('designation/create','store');
+});
+
 
 

@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 class RequestsForBuyingController extends BaseController
 {
     public function index(){
-        $data=RequestsForBuying::get();
+        $data=RequestsForBuying::with('property')->get();
         return $this->sendResponse($data,"RequestsForBuying data");
     }
 

@@ -38,7 +38,7 @@ class ClientController extends BaseController
         try{
             $clients=clients::where('email',$request->email)->first();
             if($clients){
-                if(Hash::check($request->password , $customer->password)){
+                if(Hash::check($request->password , $clients->password)){
                     $data['token']=$clients->createToken('hosp')->plainTextToken;
                     $data['data']=$clients;
                     return $this->sendResponse($data,"clients login successfully");

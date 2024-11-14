@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('client_id');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('property_title');
+            $table->date('rent_from')->nullable();
+            $table->date('rent_to')->nullable();
             $table->bigInteger('property_id')->nullable();
-            $table->date('request_date');
+            $table->timestamp('request_date');
             $table->timestamps();
         });
     }
