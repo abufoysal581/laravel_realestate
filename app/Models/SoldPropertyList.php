@@ -9,5 +9,5 @@ class SoldPropertyList extends Model
 {
     use HasFactory;
 
-    protected $fillable=['property_id', 'property_title', 'property_address', 'client_name',  'client_id', 'email', 'phone', 'total_installments', 'remaining_installments', 'total_amount', 'paid_amount', 'remaining_amount'];
+    protected $fillable=['property_id','rent_from','rent_to', 'property_title', 'property_address', 'client_name',  'client_id', 'email', 'phone', 'total_amount', 'paid_amount', 'remaining_amount'];
 }

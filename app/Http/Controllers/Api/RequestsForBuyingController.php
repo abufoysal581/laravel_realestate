@@ -8,8 +8,15 @@ use App\Http\Controllers\Api\BaseController;
 
 class RequestsForBuyingController extends BaseController
 {
-    public function index(){
-        $data=RequestsForBuying::with('property')->get();
+    public function index(Request $request){
+        $data=RequestsForBuying::with('property');
+        
+        if($request->requesttype=='rent'){
+            $data=$data->whereNotNull('rent_from');
+        }else{
+            $data=$data->whereNull('rent_from');
+        }
+        $data=$data->get();
         return $this->sendResponse($data,"RequestsForBuying data");
     }
 
@@ -17,8 +24,9 @@ class RequestsForBuyingController extends BaseController
         $data=RequestsForBuying::create($request->all());
         return $this->sendResponse($data,"RequestsForBuying created successfully");
     }
-    public function show(RequestsForBuying $request_for_rents){
-        return $this->sendResponse($RequestsForBuying,"RequestsForBuying created successfully");
+    public function show( $id){
+        $data=RequestsForBuying::with('property')->where('id',$id)->first();
+        return $this->sendResponse($data,"RequestsForBuying created successfully");
     }
 
     public function update(Request $request,$id){

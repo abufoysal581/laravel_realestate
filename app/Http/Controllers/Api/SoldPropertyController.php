@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\SoldPropertyList;
+use App\Models\RequestsForBuying;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 
@@ -15,6 +16,7 @@ class SoldPropertyController extends BaseController
 
     public function store(Request $request){
         $data=SoldPropertyList::create($request->all());
+        RequestsForBuying::where('id',$request->id)->delete();
         return $this->sendResponse($data,"RentedPropertyList created successfully");
     }
     public function show(SoldPropertyList $SoldPropertyList){

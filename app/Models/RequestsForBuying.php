@@ -9,7 +9,7 @@ class RequestsForBuying extends Model
 {
     use HasFactory;
 
-    protected $fillable=['client_name', 'client_id', 'email', 'phone', 'property_id', 'request_date'];
+    protected $fillable=['client_name', 'client_id', 'email', 'phone', 'rent_from', 'rent_to', 'property_id', 'request_date'];
 
     public function property(){
         return $this->belongsTo(property::class);
