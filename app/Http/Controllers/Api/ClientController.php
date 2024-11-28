@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class ClientController extends BaseController
 {
     
+
     public function index(Request $request){
         $data=clients::get();
         return $this->sendResponse($data,"RequestsForBuying data");
