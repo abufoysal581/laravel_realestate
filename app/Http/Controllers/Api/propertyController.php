@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\property;
+use App\Models\SoldPropertyList;
 use App\Http\Controllers\Api\BaseController;
 
 class propertyController extends BaseController
@@ -14,7 +15,12 @@ class propertyController extends BaseController
         if($request->listing_type){
             $data=$data->where('listing_type',$request->listing_type);
         }
-        $data=$data->get();
+        $data=$data->whereNotIn('id', function($query){
+            $query->select('property_id')
+            ->from(with(new SoldPropertyList)->getTable())
+            ->where('rent_to', '>=',\Carbon\Carbon::now()->isoFormat('YYYY-MM-DD'))
+            ->orWhereNull('rent_to');
+        })->get();
         return $this->sendResponse($data,"property data");
     }
 
